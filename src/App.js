@@ -17,15 +17,15 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={ lightTheme }>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/project" element={<ProjectPage />} />
-          <Route path="/work" element={<WorkPage />} />
-          <Route path="/skills" element={<MySkillsPage />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/project" element={<ProjectPage />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/skills" element={<MySkillsPage />} />
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );

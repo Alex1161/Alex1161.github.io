@@ -1,6 +1,11 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { keyframes } from 'styled-components'
+import LogoComponent from '../subcomponents/LogoComponent'
+import SocialIcons from '../subcomponents/SocialIcons'
 import PowerButton from './../subcomponents/PowerButton'
+import { YinYang } from './Svgs'
 
 const MainContainer = styled.div`
   background: ${ props => props.theme.body };
@@ -19,11 +24,119 @@ const Container = styled.div`
   padding: 2rem;
 `
 
+const Contact = styled(NavLink)`
+  color: ${props => props.theme.text};
+  position: absolute;
+  top: 2rem;
+  right: calc(1rem + 2vw);
+  text-decoration: none;
+  z-index: 1;
+`
+
+const WORK = styled(NavLink)`
+  color: ${props => props.theme.text};
+  position: absolute;
+  top: 50%;
+  right: calc(1rem + 2vw);
+  transform: rotate(90deg) translate(-50%, -50%);
+  text-decoration: none;
+  z-index: 1;
+`
+
+const BottomBar = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+`
+
+const ABOUT = styled(NavLink)`
+  color: ${props => props.theme.text};
+  text-decoration: none;
+  z-index: 1;
+`
+
+const SKILLS = styled(NavLink)`
+  color: ${props => props.theme.text};
+  text-decoration: none;
+  z-index: 1;
+`
+
+const rotate = keyframes`
+from {
+  transform: rotate(0);
+}
+
+to {
+  transform: rotate(360deg);
+}
+`
+
+const Center = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: none;
+  outline: nonde;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &>:first-child {
+    animation: ${rotate} infinite 1.5s linear;
+  }
+
+  &>:last-child {
+    padding-top: 1 rem;
+  }
+`
+
 const Main = () => {
   return (
     <MainContainer>
       <Container>
         <PowerButton />
+        <LogoComponent />
+        <SocialIcons />
+
+        <Center>
+          <YinYang width={200} height={200} fill='currentColor' />
+          <span>click here</span>
+        </Center>
+
+        <Contact target='_blank' to={{pathname: "alexanderarbieto1161@gmail.com"}}>
+          <h2>
+            Say hi..
+          </h2>
+        </Contact>
+
+        <WORK to="/work">
+          <h2>
+            Work
+          </h2>
+        </WORK>
+
+        <BottomBar>
+          <ABOUT to="/about">
+            <h2>
+              About.
+            </h2>
+          </ABOUT>
+          <SKILLS to="/skills">
+            <h2>
+              My skills.
+            </h2>
+          </SKILLS>
+        </BottomBar>
       </Container>
     </MainContainer>
   )

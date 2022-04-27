@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Facebook, Github, Twitter, YouTube } from '../components/Svgs'
+import { darkTheme } from '../components/Themes'
 
 const Icons = styled.div`
   display: flex;
@@ -22,34 +23,34 @@ const Icons = styled.div`
 const Line = styled.span`
   width: 2px;
   height: 8rem;
-  background-color: ${props => props.theme.text};
+  background-color: ${props => props.color === 'dark' ? darkTheme.text : darkTheme.body};
 `
 
-const SocialIcons = () => {
+const SocialIcons = (props) => {
   return (
     <Icons>
       <div>
-        <NavLink style={{color: 'inherit'}} target='_blank' to={{pathname: 'https://github.com/Alex1161'}}>
-          <Github width={25} height={25} fill='currentColor' />
+        <NavLink style={{color: 'inherit'}} target="_blank" to={{pathname: "https://github.com/Alex1161"}}>
+          <Github width={25} height={25} fill={props.theme === 'dark' ? darkTheme.text : darkTheme.body } />
         </NavLink>
       </div>
       <div>
-        <NavLink style={{color: 'inherit'}} target='_blank' to={{pathname: 'https://github.com/Alex1161'}}>
-          <Twitter width={25} height={25} fill='currentColor' />
+        <NavLink style={{color: 'inherit'}} target="_blank" to={{pathname: "https://github.com/Alex1161"}}>
+          <Twitter width={25} height={25} fill={props.theme === 'dark' ? darkTheme.text : darkTheme.body } />
         </NavLink>
       </div>
       <div>
-        <NavLink style={{color: 'inherit'}} target='_blank' to={{pathname: 'https://github.com/Alex1161'}}>
-          <Facebook width={25} height={25} fill='currentColor' />
+        <NavLink style={{color: 'inherit'}} target="_blank" to={{pathname: "https://github.com/Alex1161"}}>
+          <Facebook width={25} height={25} fill={props.theme === 'dark' ? darkTheme.text : darkTheme.body } />
         </NavLink>
       </div>
       <div>
-        <NavLink style={{color: 'inherit'}} target='_blank' to={{pathname: 'https://github.com/Alex1161'}}>
-          <YouTube width={25} height={25} fill='currentColor' />
+        <NavLink style={{color: 'inherit'}} target="_blank" to={{pathname: "https://github.com/Alex1161"}}>
+          <YouTube width={25} height={25} fill={props.theme === 'dark' ? darkTheme.text : darkTheme.body } />
         </NavLink>
       </div>
 
-      <Line />
+      <Line color={props.theme} />
     </Icons>
   )
 }

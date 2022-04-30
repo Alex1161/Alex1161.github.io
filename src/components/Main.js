@@ -35,7 +35,7 @@ const Contact = styled(NavLink)`
   z-index: 1;
 `
 
-const WORK = styled(NavLink)`
+const PROJECT = styled(NavLink)`
   color: ${props => props.theme.text};
   position: absolute;
   top: 50%;
@@ -143,14 +143,14 @@ const Main = () => {
           </motion.h2>
         </Contact>
 
-        <WORK to="/work" click={click}>
+        <PROJECT to="/projects" click={click}>
           <motion.h2
           whileHover={{scale: 1.1}}
           whileTap={{scale: 0.9}}
           >
-            Work
+            Projects
           </motion.h2>
-        </WORK>
+        </PROJECT>
 
         <BottomBar>
           <ABOUT to="/about" click={click}>
@@ -171,7 +171,7 @@ const Main = () => {
           </SKILLS>
         </BottomBar>
       </Container>
-      {click && <Intro click={click} />}
+      {click ? <Intro click={click} /> : null}
     </MainContainer>
   )
 }

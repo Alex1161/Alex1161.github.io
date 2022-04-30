@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
 import LogoComponent from '../subcomponents/LogoComponent'
+import ParticipleComponent from '../subcomponents/ParticipleComponent'
 import PowerButton from '../subcomponents/PowerButton'
 import SocialIcons from '../subcomponents/SocialIcons'
 import { Design, Develope } from './Svgs'
@@ -79,9 +80,10 @@ const MySkillsPage = () => {
   return (
     <ThemeProvider theme={lightTheme}>
       <Box>
-        <LogoComponent />
+        <LogoComponent theme='light' />
         <SocialIcons theme='light' />
-        <PowerButton theme='light' />
+        <PowerButton />
+        <ParticipleComponent theme='light' />
         <Main>
           <Title>
             <Design width={40} height={40} />Designer

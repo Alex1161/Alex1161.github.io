@@ -26,7 +26,7 @@ const Container = styled.div`
   padding: 2rem;
 `
 
-const Contact = styled(NavLink)`
+const Contact = styled.a`
   color: ${props => props.theme.text};
   position: absolute;
   top: 2rem;
@@ -57,7 +57,7 @@ const BottomBar = styled.div`
 `
 
 const ABOUT = styled(NavLink)`
-  color: ${props => props.click ? props.theme.body : props.theme.text};
+  color: ${props => props.$click ? props.theme.body : props.theme.text};
   text-decoration: none;
   z-index: 1;
 `
@@ -80,11 +80,11 @@ to {
 
 const Center = styled.button`
   position: absolute;
-  top: ${props => props.click ? '85%' : '50%'};
-  left: ${props => props.click ? '92%' : '50%'};
+  top: ${props => props.$click ? '85%' : '50%'};
+  left: ${props => props.$click ? '92%' : '50%'};
   transform: translate(-50%,-50%);
   border: none;
-  outline: nonde;
+  outline: none;
   background-color: transparent;
   cursor: pointer;
 
@@ -99,7 +99,7 @@ const Center = styled.button`
   }
 
   &>:last-child {
-    display: ${props => props.click ? 'none' : 'inline-block'};
+    display: ${props => props.$click ? 'none' : 'inline-block'};
     padding-top: 1 rem;
   }
 `
@@ -110,8 +110,8 @@ const DarkDiv = styled.div`
   background-color: #000;
   bottom: 0;
   right: 50%;
-  width: ${props => props.click ? '50%' : '0%'};
-  height: ${props => props.click ? '100%' : '0%'};
+  width: ${props => props.$click ? '50%' : '0%'};
+  height: ${props => props.$click ? '100%' : '0%'};
   z-index: 1;
   transition: height 0.5s ease, width 1s ease 0.5s;
 `
@@ -123,40 +123,64 @@ const Main = () => {
 
   return (
     <MainContainer>
-      <DarkDiv click={click} />
+      <DarkDiv $click={click} />
       <Container>
         <PowerButton />
         <LogoComponent theme={click ? 'dark' : 'light' } />
         <SocialIcons theme={click ? 'dark' : 'light' } />
 
-        <Center click={click}>
+        <Center $click={click}>
           <YinYang onClick={() => handleClick()} width={click ? 120 : 200} height={click ? 120 : 200} fill='currentColor' />
           <span>click here</span>
         </Center>
 
-        <Contact target="_blank" to={{pathname:"mailto:alexanderarbieto1161@gmail.com"}}>
+        <Contact href='mailto:alexanderarbieto1161@gmail.com'>
           <motion.h2
           whileHover={{scale: 1.1}}
           whileTap={{scale: 0.9}}
+          initial={{
+            y: -200,
+            transition: {type: 'spring', duration: 1.5, delay: 1}
+          }}
+          animate={{
+            y: 0,
+            transition: {type: 'spring', duration: 1.5, delay: 1}
+          }}
           >
             Say hi..
           </motion.h2>
         </Contact>
 
-        <PROJECT to="/projects" click={click}>
+        <PROJECT to="/projects" $click={click}>
           <motion.h2
           whileHover={{scale: 1.1}}
           whileTap={{scale: 0.9}}
+          initial={{
+            y: -200,
+            transition: {type: 'spring', duration: 1.5, delay: 1}
+          }}
+          animate={{
+            y: 0,
+            transition: {type: 'spring', duration: 1.5, delay: 1}
+          }}
           >
             Projects
           </motion.h2>
         </PROJECT>
 
         <BottomBar>
-          <ABOUT to="/about" click={click}>
+          <ABOUT to="/about" $click={click}>
             <motion.h2
             whileHover={{scale: 1.1}}
             whileTap={{scale: 0.9}}
+            initial={{
+              y: 200,
+              transition: {type: 'spring', duration: 1.5, delay: 1}
+            }}
+            animate={{
+              y: 0,
+              transition: {type: 'spring', duration: 1.5, delay: 1}
+            }}
             >
               About.
             </motion.h2>
@@ -165,13 +189,21 @@ const Main = () => {
             <motion.h2
             whileHover={{scale: 1.1}}
             whileTap={{scale: 0.9}}
+            initial={{
+              y: 200,
+              transition: {type: 'spring', duration: 1.5, delay: 1}
+            }}
+            animate={{
+              y: 0,
+              transition: {type: 'spring', duration: 1.5, delay: 1}
+            }}
             >
               My skills.
             </motion.h2>
           </SKILLS>
         </BottomBar>
       </Container>
-      {click ? <Intro click={click} /> : null}
+      {click ? <Intro /> : undefined}
     </MainContainer>
   )
 }

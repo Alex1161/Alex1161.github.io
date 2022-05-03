@@ -1,13 +1,18 @@
-import React from 'react'
+import { motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { English } from '../languages/english'
+import AnchorComponent from '../subcomponents/Anchor'
 import LogoComponent from '../subcomponents/LogoComponent'
 import PowerButton from '../subcomponents/PowerButton'
 import SocialIcons from '../subcomponents/SocialIcons'
 import ProjectComponent from './ProjectComponent'
 
-const MainContainer = styled.div`
-  width: 100vw;
+const MainContainer = styled(motion.div)`
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 `
 
 const Container = styled.div`
@@ -31,18 +36,43 @@ const Grid = styled.div`
   grid-gap: calc(1rem + 2vw);
 `
 
+const container = {
+  hidden: {opacity: 0},
+  show: {
+    opacity: 1,
+
+    transition: {
+      staggerChildren: 0.5,
+      duration: 0.5,
+    }
+  }
+}
+
 const ProjectPage = () => {
+  const [number, setNumber] = useState(0);
+  useEffect(() => {
+    let num = (window.innerHeight - 70) / 30;
+    setNumber(parseInt(num));
+  }, [])
   return (
-    <MainContainer>
+    <MainContainer
+    variants={container}
+    initial= 'hidden'
+    animate= 'show'
+    exit={{
+      opacity: 0, transition: {duration: 0.5}
+    }}
+    >
       <Container>
         <LogoComponent />
         <PowerButton />
         <SocialIcons />
+        <AnchorComponent number={number} />
         <Center>
           <Grid>
             {
               English.projects.map(p => {
-                return <ProjectComponent key={p.id} project={p} />
+                return <ProjectComponent key={`projects-${p.id}`} project={p} />
               })
             }
           </Grid>

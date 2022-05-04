@@ -27,14 +27,10 @@ const Box = styled(motion.a)`
 const Image = styled.div`
   background-image: ${props => `url(${props.img})`};
   width: 100%;
-  height: 60%;
-  background-size: cover;
-  border: 1px solid transparent;
-  background-position: center center;
-
-  ${Box}:hover &{
-    border: 1px solid ${props => props.theme.body};
-  }
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `
 
 const Title = styled.h3`
@@ -62,7 +58,7 @@ const Date = styled.span`
   padding: 0.5rem 0;
 `
 
-const Container = styled(motion.a)``
+const Container = styled(motion.div)``
 
 const Item = {
   hidden: {
@@ -90,7 +86,7 @@ const ProjectComponent = (props) => {
         <HashTags>
           {
             tags.map((t,id) => {
-              return <Tag key={`projects-${id}`}>#{t}</Tag>
+              return <Tag key={`tag-${id}`}>#{t}</Tag>
             })
           }
         </HashTags>

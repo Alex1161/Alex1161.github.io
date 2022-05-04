@@ -72,7 +72,7 @@ const ProjectPage = () => {
           <Grid>
             {
               English.projects.map(p => {
-                return <ProjectComponent key={`projects-${p.id}`} project={p} />
+                return <ProjectComponent key={`project-${p.id}`} project={p} />
               })
             }
           </Grid>

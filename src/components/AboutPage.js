@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Context } from 'react'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import { English } from '../languages/english'
+import { LanguageContext } from './LanguageContext'
 import LogoComponent from '../subcomponents/LogoComponent'
 import ParticipleComponent from '../subcomponents/ParticipleComponent'
 import PowerButton from '../subcomponents/PowerButton'
@@ -41,18 +41,26 @@ const Main = styled.div`
 
 const AboutPage = () => {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box>
-        <LogoComponent theme='dark' />
-        <SocialIcons theme='dark' />
-        <PowerButton />
-        <ParticipleComponent theme='dark' />
+    <LanguageContext.Consumer>
+      {
+        (value) => {
+          return (
+            <ThemeProvider theme={darkTheme}>
+              <Box>
+                <LogoComponent theme='dark' />
+                <SocialIcons theme='dark' />
+                <PowerButton />
+                <ParticipleComponent theme='dark' />
 
-        <Main>
-          {English.about}
-        </Main>
-      </Box>
-    </ThemeProvider>
+                <Main>
+                  {value.language.about}
+                </Main>
+              </Box>
+            </ThemeProvider>
+          )
+        }
+      }
+    </LanguageContext.Consumer>
   )
 }
 

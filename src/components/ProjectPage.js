@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { English } from '../languages/english'
 import AnchorComponent from '../subcomponents/Anchor'
 import LogoComponent from '../subcomponents/LogoComponent'
 import PowerButton from '../subcomponents/PowerButton'
 import SocialIcons from '../subcomponents/SocialIcons'
+import { LanguageContext } from './LanguageContext'
 import ProjectComponent from './ProjectComponent'
 
 const MainContainer = styled(motion.div)`
@@ -55,30 +55,38 @@ const ProjectPage = () => {
     setNumber(parseInt(num));
   }, [])
   return (
-    <MainContainer
-    variants={container}
-    initial= 'hidden'
-    animate= 'show'
-    exit={{
-      opacity: 0, transition: {duration: 0.5}
-    }}
-    >
-      <Container>
-        <LogoComponent />
-        <PowerButton />
-        <SocialIcons />
-        <AnchorComponent number={number} />
-        <Center>
-          <Grid>
-            {
-              English.projects.map(p => {
-                return <ProjectComponent key={`project-${p.id}`} project={p} />
-              })
-            }
-          </Grid>
-        </Center>
-      </Container>
-    </MainContainer>
+    <LanguageContext.Consumer>
+      {
+        (value) => {
+          return (
+            <MainContainer
+            variants={container}
+            initial= 'hidden'
+            animate= 'show'
+            exit={{
+              opacity: 0, transition: {duration: 0.5}
+            }}
+            >
+              <Container>
+                <LogoComponent />
+                <PowerButton />
+                <SocialIcons />
+                <AnchorComponent number={number} />
+                <Center>
+                  <Grid>
+                    {
+                      value.language.projects.map(p => {
+                        return <ProjectComponent key={`project-${p.id}`} project={p} />
+                      })
+                    }
+                  </Grid>
+                </Center>
+              </Container>
+            </MainContainer>
+          )
+        }
+      }
+    </LanguageContext.Consumer>
   )
 }
 

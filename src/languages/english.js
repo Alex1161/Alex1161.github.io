@@ -1,4 +1,4 @@
-export const English = {
+export const english = {
   about: 'I am a Computer Engineering Student with a huge desire of starting in the world of work and a considerable experience in team projects.',
   projects: [
     {
@@ -6,6 +6,7 @@ export const English = {
       name:"Rusty Redis",
       tags:["rust","tcp","github projects"],
       date:"Mar 2021 - Aug 2021",
+      description: "A redis with limited functionalities using the programming languange Rust, sockets TCP and Github Projects for the management.",
       imgSrc:"https://i.postimg.cc/8PZsNCSC/rusty-redis-1.jpg",
       link:"https://github.com/taller-1-fiuba-rust/21C1-OxidadosFC"
     },
@@ -14,6 +15,7 @@ export const English = {
       name:"Rusty Redis",
       tags:["rust","tcp","github projects"],
       date:"Mar 2021 - Aug 2021",
+      description: "A redis with limited functionalities using the programming languange Rust, sockets TCP and Github Projects for the management.",
       imgSrc:"https://i.postimg.cc/8PZsNCSC/rusty-redis-1.jpg",
       link:"https://github.com/taller-1-fiuba-rust/21C1-OxidadosFC"
     },
@@ -22,6 +24,7 @@ export const English = {
       name:"Rusty Redis",
       tags:["rust","tcp","github projects"],
       date:"Mar 2021 - Aug 2021",
+      description: "A redis with limited functionalities using the programming languange Rust, sockets TCP and Github Projects for the management.",
       imgSrc:"https://i.postimg.cc/8PZsNCSC/rusty-redis-1.jpg",
       link:"https://github.com/taller-1-fiuba-rust/21C1-OxidadosFC"
     },
@@ -30,6 +33,7 @@ export const English = {
       name:"Rusty Redis",
       tags:["rust","tcp","github projects"],
       date:"Mar 2021 - Aug 2021",
+      description: "A redis with limited functionalities using the programming languange Rust, sockets TCP and Github Projects for the management.",
       imgSrc:"https://i.postimg.cc/8PZsNCSC/rusty-redis-1.jpg",
       link:"https://github.com/taller-1-fiuba-rust/21C1-OxidadosFC"
     },
@@ -38,6 +42,7 @@ export const English = {
       name:"Rusty Redis",
       tags:["rust","tcp","github projects"],
       date:"Mar 2021 - Aug 2021",
+      description: "A redis with limited functionalities using the programming languange Rust, sockets TCP and Github Projects for the management.",
       imgSrc:"https://i.postimg.cc/8PZsNCSC/rusty-redis-1.jpg",
       link:"https://github.com/taller-1-fiuba-rust/21C1-OxidadosFC"
     }

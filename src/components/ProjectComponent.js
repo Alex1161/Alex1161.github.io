@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Box = styled(motion.a)`
   width: calc(10rem + 15vw);
   text-decoration: none;
-  height: 20rem;
+  height: 27rem;
   padding: 1rem;
   color: ${props => props.theme.text};
   border: 2px solid ${props => props.theme.text};
@@ -45,6 +45,12 @@ const Title = styled.h3`
     border-bottom: 1px solid ${props => props.theme.body};
   }
 `
+const Description = styled.span`
+  color: inherit;
+  padding: 0.5rem 0;
+  padding-top: 1rem;
+  font-family: 'Karla', sans-serif;
+`
 
 const HashTags = styled.div`
   padding: 0.5rem 0;
@@ -74,7 +80,7 @@ const Item = {
 }
 
 const ProjectComponent = (props) => {
-  const {name, tags, date, imgSrc, link} = props.project;
+  const {name, tags, date, description, imgSrc, link} = props.project;
 
   return (
     <Container
@@ -83,6 +89,7 @@ const ProjectComponent = (props) => {
       <Box target='_blank' href={link}>
         <Image img={imgSrc} />
         <Title>{name}</Title>
+        <Description>{description}</Description>
         <HashTags>
           {
             tags.map((t,id) => {
